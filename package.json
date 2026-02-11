@@ -1,0 +1,39 @@
+{
+  "name": "techwise-pro-auto-revenue",
+  "version": "1.0.0",
+  "description": "AI-powered automated revenue generation site using Claude API",
+  "main": "auto-content-generator.js",
+  "scripts": {
+    "start": "node auto-content-generator.js",
+    "generate": "node auto-content-generator.js --once",
+    "test": "node auto-content-generator.js --once",
+    "setup": "node setup-wizard.js",
+    "monitor": "node monitor-analytics.js"
+  },
+  "keywords": [
+    "ai",
+    "automation",
+    "affiliate",
+    "passive-income",
+    "claude",
+    "content-generation"
+  ],
+  "author": "TechWise Pro",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0",
+    "dotenv": "^16.4.5",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/techwise-pro"
+  }
+}
