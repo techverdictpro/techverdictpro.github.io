@@ -6,7 +6,7 @@
     <title>TechVerdictPro - Expert Tech Reviews & Buying Guides</title>
     <meta name="description" content="In-depth tech product reviews, buying guides, and comparisons. Helping you make informed decisions on gaming laptops, monitors, headphones, and more.">
     
-    <!-- Fonts: Distinctive serif + clean sans -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -88,7 +88,7 @@
             color: var(--tech-blue);
         }
         
-        /* Hero Section */
+        /* Hero */
         .hero {
             background: linear-gradient(135deg, var(--navy) 0%, #1a2549 100%);
             color: white;
@@ -160,7 +160,7 @@
             box-shadow: 0 6px 30px rgba(46, 124, 246, 0.4);
         }
         
-        /* Stats Bar */
+        /* Stats */
         .stats {
             background: white;
             border-bottom: 1px solid var(--gray-300);
@@ -216,6 +216,37 @@
             font-size: 1.1rem;
         }
         
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            background: white;
+            border: 2px solid var(--gray-300);
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--gray-900);
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--tech-blue);
+            color: var(--tech-blue);
+        }
+        
+        .filter-btn.active {
+            background: var(--tech-blue);
+            color: white;
+            border-color: var(--tech-blue);
+        }
+        
         /* Articles Grid */
         .articles-grid {
             display: grid;
@@ -231,7 +262,14 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             transition: all 0.3s;
             border: 1px solid var(--gray-300);
+            opacity: 0;
+            animation: fadeInUp 0.5s ease-out forwards;
         }
+        
+        .article-card:nth-child(1) { animation-delay: 0.1s; }
+        .article-card:nth-child(2) { animation-delay: 0.2s; }
+        .article-card:nth-child(3) { animation-delay: 0.3s; }
+        .article-card:nth-child(4) { animation-delay: 0.4s; }
         
         .article-card:hover {
             transform: translateY(-8px);
@@ -279,6 +317,16 @@
             color: var(--gray-600);
             margin-bottom: 1.2rem;
             font-size: 0.95rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .article-date {
+            color: var(--gray-600);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
         }
         
         .read-more {
@@ -295,7 +343,24 @@
             gap: 0.8rem;
         }
         
-        /* Categories */
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray-600);
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--gray-300);
+            border-top-color: var(--tech-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        /* Categories Section */
         .categories {
             background: var(--gray-100);
             padding: 5rem 2rem;
@@ -319,6 +384,7 @@
             color: var(--gray-900);
             transition: all 0.3s;
             border: 2px solid transparent;
+            cursor: pointer;
         }
         
         .category-card:hover {
@@ -454,6 +520,10 @@
             }
         }
         
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -486,7 +556,6 @@
             <a href="/" class="logo">TechVerdict<span>Pro</span></a>
             <ul>
                 <li><a href="#reviews">Reviews</a></li>
-                <li><a href="#guides">Guides</a></li>
                 <li><a href="#categories">Categories</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
@@ -534,16 +603,26 @@
             <p>Fresh, in-depth analysis of the newest tech products</p>
         </div>
 
-        <div class="articles-grid" id="articles-container">
-            <!-- Articles will be loaded here -->
-            <div class="article-card">
-                <div class="article-image">💻</div>
-                <div class="article-content">
-                    <span class="article-category">Loading...</span>
-                    <h3>Articles are being loaded</h3>
-                    <p>Please refresh the page if you don't see articles shortly.</p>
-                </div>
-            </div>
+        <!-- Category Filter -->
+        <div class="category-filter">
+            <button class="filter-btn active" data-category="all">All Reviews</button>
+            <button class="filter-btn" data-category="laptop">Laptops</button>
+            <button class="filter-btn" data-category="monitor">Monitors</button>
+            <button class="filter-btn" data-category="headphone">Headphones</button>
+            <button class="filter-btn" data-category="keyboard">Keyboards</button>
+            <button class="filter-btn" data-category="mouse">Mice</button>
+            <button class="filter-btn" data-category="webcam">Webcams</button>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading articles...</p>
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="articles-grid" id="articles-container" style="display: none;">
+            <!-- Articles will be loaded here by JavaScript -->
         </div>
     </main>
 
@@ -555,36 +634,36 @@
         </div>
         
         <div class="categories-grid">
-            <a href="/articles/?cat=laptops" class="category-card">
+            <div class="category-card" data-category="laptop">
                 <div class="category-icon">💻</div>
                 <h3>Laptops</h3>
                 <p>Gaming & Work</p>
-            </a>
-            <a href="/articles/?cat=monitors" class="category-card">
+            </div>
+            <div class="category-card" data-category="monitor">
                 <div class="category-icon">🖥️</div>
                 <h3>Monitors</h3>
                 <p>4K & Gaming</p>
-            </a>
-            <a href="/articles/?cat=headphones" class="category-card">
+            </div>
+            <div class="category-card" data-category="headphone">
                 <div class="category-icon">🎧</div>
                 <h3>Headphones</h3>
                 <p>Wireless & Wired</p>
-            </a>
-            <a href="/articles/?cat=keyboards" class="category-card">
+            </div>
+            <div class="category-card" data-category="keyboard">
                 <div class="category-icon">⌨️</div>
                 <h3>Keyboards</h3>
                 <p>Mechanical</p>
-            </a>
-            <a href="/articles/?cat=mice" class="category-card">
+            </div>
+            <div class="category-card" data-category="mouse">
                 <div class="category-icon">🖱️</div>
                 <h3>Gaming Mice</h3>
                 <p>Wireless & RGB</p>
-            </a>
-            <a href="/articles/?cat=accessories" class="category-card">
-                <div class="category-icon">🔌</div>
-                <h3>Accessories</h3>
-                <p>Cables & More</p>
-            </a>
+            </div>
+            <div class="category-card" data-category="webcam">
+                <div class="category-icon">📷</div>
+                <h3>Webcams</h3>
+                <p>Streaming</p>
+            </div>
         </div>
     </section>
 
@@ -629,16 +708,15 @@
             <div class="footer-links">
                 <h4>Reviews</h4>
                 <ul>
-                    <li><a href="/articles/">All Reviews</a></li>
-                    <li><a href="/articles/?cat=laptops">Laptops</a></li>
-                    <li><a href="/articles/?cat=monitors">Monitors</a></li>
-                    <li><a href="/articles/?cat=headphones">Audio</a></li>
+                    <li><a href="/">All Reviews</a></li>
+                    <li><a href="#" data-filter="laptop">Laptops</a></li>
+                    <li><a href="#" data-filter="monitor">Monitors</a></li>
+                    <li><a href="#" data-filter="headphone">Audio</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Resources</h4>
                 <ul>
-                    <li><a href="#guides">Buying Guides</a></li>
                     <li><a href="#categories">Categories</a></li>
                     <li><a href="#about">About Us</a></li>
                 </ul>
@@ -646,9 +724,9 @@
             <div class="footer-links">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="/privacy.html">Privacy Policy</a></li>
-                    <li><a href="/terms.html">Terms of Service</a></li>
-                    <li><a href="/disclosure.html">Affiliate Disclosure</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Affiliate Disclosure</a></li>
                 </ul>
             </div>
         </div>
@@ -658,24 +736,195 @@
     </footer>
 
     <script>
-        // Animate article count
-        const targetCount = 47; // Will be dynamic
-        const countElement = document.getElementById('article-count');
-        let currentCount = 0;
-        
-        const interval = setInterval(() => {
-            currentCount++;
-            countElement.textContent = currentCount + '+';
-            if (currentCount >= targetCount) {
-                clearInterval(interval);
-            }
-        }, 30);
+        // Article data structure
+        let allArticles = [];
+        let currentFilter = 'all';
 
-        // Load articles dynamically
-        // This is a placeholder - you'll need to implement actual article loading
+        // Category icon mapping
+        const categoryIcons = {
+            laptop: '💻',
+            monitor: '🖥️',
+            headphone: '🎧',
+            keyboard: '⌨️',
+            mouse: '🖱️',
+            webcam: '📷',
+            speaker: '🔊',
+            phone: '📱',
+            tablet: '📱',
+            watch: '⌚',
+            default: '🔧'
+        };
+
+        // Load articles from /articles/ directory
+        async function loadArticles() {
+            try {
+                // Fetch the articles directory page
+                const response = await fetch('/articles/');
+                const html = await response.text();
+                
+                // Parse HTML to find all .html links
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const links = Array.from(doc.querySelectorAll('a[href$=".html"]'));
+                
+                // Extract article metadata from filenames
+                allArticles = links.map(link => {
+                    const href = link.getAttribute('href');
+                    const filename = href.split('/').pop();
+                    
+                    // Extract timestamp and title from filename
+                    // Format: timestamp-product-name.html
+                    const parts = filename.replace('.html', '').split('-');
+                    const timestamp = parts[0];
+                    const title = parts.slice(1).join(' ').replace(/\b\w/g, l => l.toUpperCase());
+                    
+                    // Detect category from filename
+                    const lowerFilename = filename.toLowerCase();
+                    let category = 'default';
+                    if (lowerFilename.includes('laptop')) category = 'laptop';
+                    else if (lowerFilename.includes('monitor')) category = 'monitor';
+                    else if (lowerFilename.includes('headphone') || lowerFilename.includes('earbuds') || lowerFilename.includes('audio')) category = 'headphone';
+                    else if (lowerFilename.includes('keyboard')) category = 'keyboard';
+                    else if (lowerFilename.includes('mouse') || lowerFilename.includes('mice')) category = 'mouse';
+                    else if (lowerFilename.includes('webcam') || lowerFilename.includes('camera')) category = 'webcam';
+                    else if (lowerFilename.includes('speaker')) category = 'speaker';
+                    
+                    return {
+                        title: title,
+                        url: '/articles/' + filename,
+                        category: category,
+                        timestamp: parseInt(timestamp),
+                        date: new Date(parseInt(timestamp)).toLocaleDateString('en-US', { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                        })
+                    };
+                }).sort((a, b) => b.timestamp - a.timestamp); // Sort by newest first
+                
+                // Update article count
+                document.getElementById('article-count').textContent = allArticles.length + '+';
+                
+                // Display articles
+                displayArticles();
+                
+            } catch (error) {
+                console.error('Error loading articles:', error);
+                document.getElementById('loading').innerHTML = '<p>Unable to load articles. Please refresh the page.</p>';
+            }
+        }
+
+        // Display articles based on current filter
+        function displayArticles() {
+            const container = document.getElementById('articles-container');
+            const loading = document.getElementById('loading');
+            
+            // Filter articles
+            let filtered = currentFilter === 'all' 
+                ? allArticles 
+                : allArticles.filter(article => article.category === currentFilter);
+            
+            // Show only latest 4 on homepage, or all when filtered
+            const articlesToShow = currentFilter === 'all' ? filtered.slice(0, 4) : filtered;
+            
+            if (articlesToShow.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--gray-600); padding: 3rem;">No articles found in this category yet. Check back soon!</p>';
+            } else {
+                container.innerHTML = articlesToShow.map((article, index) => `
+                    <div class="article-card" style="animation-delay: ${index * 0.1}s">
+                        <div class="article-image">
+                            ${categoryIcons[article.category] || categoryIcons.default}
+                        </div>
+                        <div class="article-content">
+                            <span class="article-category">${article.category}</span>
+                            <h3>${article.title}</h3>
+                            <p class="article-date">${article.date}</p>
+                            <p>Expert review with in-depth analysis, specifications, pros and cons, and buying recommendations.</p>
+                            <a href="${article.url}" class="read-more">Read Full Review →</a>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            loading.style.display = 'none';
+            container.style.display = 'grid';
+        }
+
+        // Category filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Update filter and display
+                currentFilter = btn.dataset.category;
+                displayArticles();
+                
+                // Scroll to articles
+                document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Category cards
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const category = card.dataset.category;
+                
+                // Update filter button
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                const filterBtn = document.querySelector(`.filter-btn[data-category="${category}"]`);
+                if (filterBtn) filterBtn.classList.add('active');
+                
+                // Update filter and display
+                currentFilter = category;
+                displayArticles();
+                
+                // Scroll to articles
+                document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Footer category links
+        document.querySelectorAll('[data-filter]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const category = link.dataset.filter;
+                
+                // Update filter button
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                const filterBtn = document.querySelector(`.filter-btn[data-category="${category}"]`);
+                if (filterBtn) filterBtn.classList.add('active');
+                
+                // Update filter and display
+                currentFilter = category;
+                displayArticles();
+                
+                // Scroll to articles
+                document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Animate article count on load
+        function animateCount(target) {
+            const element = document.getElementById('article-count');
+            let current = 0;
+            const increment = Math.ceil(target / 30);
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = current + '+';
+                }
+            }, 30);
+        }
+
+        // Load articles on page load
         window.addEventListener('DOMContentLoaded', () => {
-            // Future: Fetch articles from your articles directory
-            // For now, the page will work with the placeholder
+            loadArticles();
         });
     </script>
 </body>
