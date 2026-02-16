@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Reviews - TechVerdictPro</title>
+    <meta name="description" content="Browse all our expert tech reviews, buying guides, and product comparisons.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles/article.css">
+    
+    <style>
+        :root {
+            --navy: #0A1128;
+            --tech-blue: #2E7CF6;
+            --light-blue: #E8F1FF;
+            --gray-100: #F8F9FA;
+            --gray-300: #DEE2E6;
+            --gray-600: #6C757D;
+            --gray-900: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-900);
+            line-height: 1.6;
+            background: var(--gray-100);
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            border-bottom: 1px solid var(--gray-300);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        .logo span {
+            color: var(--tech-blue);
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        nav a {
+            color: var(--gray-900);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--tech-blue);
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+        }
+        
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border: 1px solid var(--gray-300);
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, #ffffff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-bottom: 1px solid var(--gray-300);
+        }
+        
+        .article-content {
+            padding: 1.8rem;
+        }
+        
+        .article-category {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--tech-blue);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+        
+        .article-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+        
+        .article-date {
+            color: var(--gray-600);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        
+        .article-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 3rem 2rem 2rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--tech-blue);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="/" class="logo">TechVerdict<span>Pro</span></a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles/">All Reviews</a></li>
+                <li><a href="/#categories">Categories</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="page-header">
+            <h1>All Reviews</h1>
+            <p>Browse our complete collection of expert tech reviews and buying guides</p>
+        </div>
+
+        <div class="articles-grid">
+            <!-- Articles will automatically appear here from GitHub Pages directory listing -->
+            <!-- This page shows all .html files in the /articles/ directory -->
+            
+            <div class="article-card" style="opacity: 0.6; pointer-events: none;">
+                <div class="article-image">📝</div>
+                <div class="article-content">
+                    <span class="article-category">Info</span>
+                    <h3>Articles Loading</h3>
+                    <p class="article-date">Auto-generated content</p>
+                    <p>Your review articles will appear automatically on this page. Simply upload new .html review files to the /articles/ directory and they will be displayed here.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 TechVerdictPro. All rights reserved. | <a href="/">Back to Home</a></p>
+    </footer>
+
+    <script>
+        // This script will auto-populate articles from the directory
+        // GitHub Pages will show all HTML files in this directory automatically
+        console.log('Articles page loaded. Directory listing will show all review files.');
+    </script>
+</body>
+</html>
