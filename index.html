@@ -1,176 +1,448 @@
 <!DOCTYPE html>
-<html lang="bg">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechWise Pro - Умни Технологични Ревюта и Препоръки</title>
-    <meta name="description" content="AI-автоматизиран сайт за технологични продукти, ревюта и сравнения">
+    <title>TechVerdictPro - Expert Tech Reviews & Buying Guides</title>
+    <meta name="description" content="In-depth tech product reviews, buying guides, and comparisons. Helping you make informed decisions on gaming laptops, monitors, headphones, and more.">
     
-    <!-- Google Fonts - distinctive choice -->
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Fonts: Distinctive serif + clean sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #0066FF;
-            --accent: #00D9FF;
-            --dark: #0A0E27;
-            --gray: #6B7280;
-            --light: #F8FAFC;
-            --success: #10B981;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --navy: #0A1128;
+            --tech-blue: #2E7CF6;
+            --light-blue: #E8F1FF;
+            --accent: #FF6B35;
+            --gray-100: #F8F9FA;
+            --gray-300: #DEE2E6;
+            --gray-600: #6C757D;
+            --gray-900: #212529;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Lexend', sans-serif;
-            background: var(--light);
-            color: var(--dark);
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-900);
             line-height: 1.6;
+            background: white;
             overflow-x: hidden;
         }
-
-        /* Animated background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.05;
-            background: 
-                radial-gradient(circle at 20% 50%, var(--primary) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, var(--accent) 0%, transparent 50%);
-            animation: bgPulse 15s ease-in-out infinite;
-        }
-
-        @keyframes bgPulse {
-            0%, 100% { opacity: 0.05; }
-            50% { opacity: 0.08; }
-        }
-
+        
         /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 0;
+            background: white;
+            border-bottom: 1px solid var(--gray-300);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(0, 102, 255, 0.1);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
         }
-
-        .container {
-            max-width: 1200px;
+        
+        nav {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .header-content {
+            padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
+        
         .logo {
+            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-family: 'Space Mono', monospace;
-            letter-spacing: -1px;
+            font-weight: 900;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: -0.02em;
         }
-
-        .stats {
+        
+        .logo span {
+            color: var(--tech-blue);
+        }
+        
+        nav ul {
             display: flex;
-            gap: 2rem;
-            font-size: 0.85rem;
+            gap: 2.5rem;
+            list-style: none;
         }
-
-        .stat {
-            text-align: center;
+        
+        nav a {
+            color: var(--gray-900);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
         }
-
-        .stat-number {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary);
-            font-family: 'Space Mono', monospace;
+        
+        nav a:hover {
+            color: var(--tech-blue);
         }
-
-        .stat-label {
-            color: var(--gray);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
+        
         /* Hero Section */
         .hero {
-            padding: 4rem 0;
-            text-align: center;
+            background: linear-gradient(135deg, var(--navy) 0%, #1a2549 100%);
+            color: white;
+            padding: 8rem 2rem 6rem;
             position: relative;
+            overflow: hidden;
         }
-
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(46, 124, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
             line-height: 1.1;
-            animation: fadeInUp 0.8s ease;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            animation: fadeInUp 0.8s ease-out;
         }
-
-        .hero .highlight {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        
+        .hero h1 span {
+            color: var(--tech-blue);
+            display: block;
         }
-
+        
         .hero p {
             font-size: 1.3rem;
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            animation: fadeInUp 0.8s ease 0.2s both;
+            max-width: 600px;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
-
-        .badge {
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--tech-blue);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(46, 124, 246, 0.3);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(46, 124, 246, 0.4);
+        }
+        
+        /* Stats Bar */
+        .stats {
+            background: white;
+            border-bottom: 1px solid var(--gray-300);
+            padding: 3rem 2rem;
+        }
+        
+        .stats-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--tech-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+        }
+        
+        .stat-item p {
+            color: var(--gray-600);
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        
+        .section-header {
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-header p {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+        }
+        
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border: 1px solid var(--gray-300);
+        }
+        
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, #ffffff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--tech-blue);
+            border-bottom: 1px solid var(--gray-300);
+        }
+        
+        .article-content {
+            padding: 1.8rem;
+        }
+        
+        .article-category {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--tech-blue);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+        
+        .article-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+        
+        .article-card p {
+            color: var(--gray-600);
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+        
+        .read-more {
+            color: var(--tech-blue);
+            text-decoration: none;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-            color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease 0.4s both;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            transition: gap 0.3s;
         }
-
-        .pulse {
-            width: 8px;
-            height: 8px;
+        
+        .read-more:hover {
+            gap: 0.8rem;
+        }
+        
+        /* Categories */
+        .categories {
+            background: var(--gray-100);
+            padding: 5rem 2rem;
+            margin: 5rem -2rem 0;
+        }
+        
+        .categories-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .category-card {
             background: white;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--gray-900);
+            transition: all 0.3s;
+            border: 2px solid transparent;
         }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
+        
+        .category-card:hover {
+            border-color: var(--tech-blue);
+            transform: translateY(-4px);
         }
-
+        
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-card h3 {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .category-card p {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        
+        /* Features */
+        .features {
+            margin: 5rem 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--tech-blue) 0%, #5b9df9 100%);
+            color: white;
+            font-size: 2rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 8px 20px rgba(46, 124, 246, 0.3);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .feature-card p {
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 5rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-about h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+        
+        .footer-links h4 {
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.7;
+            display: block;
+            margin-bottom: 0.6rem;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -181,621 +453,230 @@
                 transform: translateY(0);
             }
         }
-
-        /* Control Panel */
-        .control-panel {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            margin: 3rem auto;
-            max-width: 900px;
-            border: 2px solid rgba(0, 102, 255, 0.1);
-        }
-
-        .control-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--light);
-        }
-
-        .control-header h2 {
-            font-size: 1.8rem;
-            font-family: 'Space Mono', monospace;
-        }
-
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            padding: 0.6rem 1.2rem;
-            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-            color: white;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .buttons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .action-btn {
-            background: var(--gradient);
-            color: white;
-            border: none;
-            padding: 1.2rem 2rem;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Lexend', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .action-btn:before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .action-btn:hover:before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .action-btn.secondary {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        /* Settings Panel */
-        .settings {
-            background: var(--light);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-top: 2rem;
-        }
-
-        .setting-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .setting-row:last-child {
-            border-bottom: none;
-        }
-
-        .setting-label {
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .setting-value {
-            font-family: 'Space Mono', monospace;
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        /* Activity Log */
-        .activity-log {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            margin: 2rem auto;
-            max-width: 900px;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .log-entry {
-            padding: 1rem;
-            border-left: 3px solid var(--primary);
-            margin-bottom: 1rem;
-            background: var(--light);
-            border-radius: 8px;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .log-time {
-            font-size: 0.85rem;
-            color: var(--gray);
-            font-family: 'Space Mono', monospace;
-        }
-
-        .log-message {
-            margin-top: 0.5rem;
-            color: var(--dark);
-        }
-
-        /* Revenue Section */
-        .revenue-section {
-            background: linear-gradient(135deg, var(--dark) 0%, #1a1f3a 100%);
-            color: white;
-            padding: 4rem 2rem;
-            margin: 4rem 0;
-            border-radius: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .revenue-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .revenue-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .revenue-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-        }
-
-        .revenue-amount {
-            font-size: 3rem;
-            font-weight: 700;
-            font-family: 'Space Mono', monospace;
-            margin: 1rem 0;
-            background: linear-gradient(135deg, #00D9FF 0%, #0066FF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .revenue-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.7;
-        }
-
-        /* Info Box */
-        .info-box {
-            background: linear-gradient(135deg, #FFF4E6 0%, #FFE5CC 100%);
-            border-left: 4px solid #FF9800;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 2rem auto;
-            max-width: 900px;
-        }
-
-        .info-box h3 {
-            color: #E65100;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .info-box ul {
-            margin-left: 1.5rem;
-            color: #5D4037;
-        }
-
-        .info-box li {
-            margin: 0.5rem 0;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 0;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-section h4 {
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: var(--accent);
-        }
-
+        
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
-
-            .stats {
-                flex-direction: column;
-                gap: 1rem;
+            
+            .hero p {
+                font-size: 1.1rem;
             }
-
-            .buttons-grid {
+            
+            nav ul {
+                display: none;
+            }
+            
+            .articles-grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Loading Animation */
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .spinner {
-            border: 4px solid var(--light);
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-
+    <!-- Header -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">⚡ TechWise Pro</div>
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-number" id="articles-count">0</div>
-                        <div class="stat-label">Статии</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number" id="revenue-today">€0</div>
-                        <div class="stat-label">Днес</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number" id="revenue-month">€0</div>
-                        <div class="stat-label">Месец</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <nav>
+            <a href="/" class="logo">TechVerdict<span>Pro</span></a>
+            <ul>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#guides">Guides</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main class="container">
-        <section class="hero">
-            <div class="badge">
-                <span class="pulse"></span>
-                AI Автоматизация Активна
-            </div>
-            <h1>Автоматизиран Сайт за <span class="highlight">Пасивен Доход</span></h1>
-            <p>AI-управляван review сайт, който генерира качествено съдържание, привлича трафик и генерира приходи 24/7</p>
-        </section>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Expert Tech Reviews<br>
+                <span>You Can Trust</span>
+            </h1>
+            <p>In-depth product reviews, buying guides, and comparisons to help you make informed decisions on gaming laptops, monitors, headphones, and more.</p>
+            <a href="#reviews" class="cta-button">Browse Latest Reviews</a>
+        </div>
+    </section>
 
-        <div class="control-panel">
-            <div class="control-header">
-                <h2>⚙️ Контролен Панел</h2>
-                <div class="status-indicator">
-                    <span class="pulse"></span>
-                    Системата Работи
-                </div>
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3 id="article-count">0</h3>
+                <p>Expert Reviews</p>
             </div>
-
-            <div class="buttons-grid">
-                <button class="action-btn" onclick="generateArticle()">
-                    📝 Генерирай Нова Статия
-                </button>
-                <button class="action-btn" onclick="publishContent()">
-                    🚀 Публикувай Съдържание
-                </button>
-                <button class="action-btn secondary" onclick="analyzeSEO()">
-                    📊 SEO Анализ
-                </button>
-                <button class="action-btn secondary" onclick="checkRevenue()">
-                    💰 Провери Приходи
-                </button>
+            <div class="stat-item">
+                <h3>35+</h3>
+                <p>Categories</p>
             </div>
-
-            <div class="settings">
-                <h3 style="margin-bottom: 1rem;">⚙️ Настройки на Автоматизацията</h3>
-                <div class="setting-row">
-                    <span class="setting-label">Статии на ден:</span>
-                    <span class="setting-value">3-5</span>
-                </div>
-                <div class="setting-row">
-                    <span class="setting-label">AI Модел:</span>
-                    <span class="setting-value">Claude Sonnet 4.5</span>
-                </div>
-                <div class="setting-row">
-                    <span class="setting-label">Affiliate Network:</span>
-                    <span class="setting-value">Amazon, eBay, AliExpress</span>
-                </div>
-                <div class="setting-row">
-                    <span class="setting-label">SEO Оптимизация:</span>
-                    <span class="setting-value">Активна</span>
-                </div>
-                <div class="setting-row">
-                    <span class="setting-label">Автоматично публикуване:</span>
-                    <span class="setting-value">Включено</span>
-                </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Unbiased</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Updated</p>
             </div>
         </div>
+    </section>
 
-        <div class="info-box">
-            <h3>⚠️ Как работи системата за автоматичен доход:</h3>
-            <ul>
-                <li><strong>AI генерира съдържание</strong> - Claude API автоматично създава 3-5 review статии дневно за популярни tech продукти</li>
-                <li><strong>SEO оптимизация</strong> - Автоматично оптимизиране за Google с target keywords с висок търсене</li>
-                <li><strong>Affiliate монетизация</strong> - Всяка статия съдържа affiliate линкове към Amazon, eBay, AliExpress (комисионни 3-10%)</li>
-                <li><strong>Google AdSense</strong> - Допълнителни приходи от реклами ($5-15 на 1000 посетители)</li>
-                <li><strong>Email автоматизация</strong> - Събиране на subscribers за affiliate продукти</li>
-            </ul>
+    <!-- Main Content -->
+    <main id="reviews">
+        <div class="section-header">
+            <h2>Latest Reviews</h2>
+            <p>Fresh, in-depth analysis of the newest tech products</p>
         </div>
 
-        <div class="revenue-section">
-            <div class="container">
-                <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">💎 Прогнозирани Приходи</h2>
-                <div class="revenue-grid">
-                    <div class="revenue-card">
-                        <div class="revenue-label">Седмичен Приход</div>
-                        <div class="revenue-amount">€125</div>
-                        <p style="opacity: 0.7; font-size: 0.9rem;">От affiliate + реклами</p>
-                    </div>
-                    <div class="revenue-card">
-                        <div class="revenue-label">Месечен Приход</div>
-                        <div class="revenue-amount">€500</div>
-                        <p style="opacity: 0.7; font-size: 0.9rem;">При 5,000 посетители/месец</p>
-                    </div>
-                    <div class="revenue-card">
-                        <div class="revenue-label">След 6 месеца</div>
-                        <div class="revenue-amount">€2,000+</div>
-                        <p style="opacity: 0.7; font-size: 0.9rem;">При оптимизиран трафик</p>
-                    </div>
-                    <div class="revenue-card">
-                        <div class="revenue-label">Годишен Потенциал</div>
-                        <div class="revenue-amount">€30,000+</div>
-                        <p style="opacity: 0.7; font-size: 0.9rem;">При scale на съдържанието</p>
-                    </div>
+        <div class="articles-grid" id="articles-container">
+            <!-- Articles will be loaded here -->
+            <div class="article-card">
+                <div class="article-image">💻</div>
+                <div class="article-content">
+                    <span class="article-category">Loading...</span>
+                    <h3>Articles are being loaded</h3>
+                    <p>Please refresh the page if you don't see articles shortly.</p>
                 </div>
             </div>
-        </div>
-
-        <div class="activity-log">
-            <h2 style="margin-bottom: 1.5rem; font-family: 'Space Mono', monospace;">📋 Активност на Системата</h2>
-            <div id="log-container">
-                <div class="log-entry">
-                    <div class="log-time">2026-02-10 14:23:15</div>
-                    <div class="log-message">✅ Система инициализирана успешно</div>
-                </div>
-                <div class="log-entry">
-                    <div class="log-time">2026-02-10 14:23:45</div>
-                    <div class="log-message">🤖 Claude API свързан - готов за генериране</div>
-                </div>
-                <div class="log-entry">
-                    <div class="log-time">2026-02-10 14:24:10</div>
-                    <div class="log-message">📊 SEO модул активиран</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p style="margin-top: 1rem; color: var(--gray);">Обработка...</p>
         </div>
     </main>
 
+    <!-- Categories -->
+    <section class="categories" id="categories">
+        <div class="section-header" style="max-width: 1400px; margin: 0 auto 3rem;">
+            <h2>Browse by Category</h2>
+            <p>Find exactly what you're looking for</p>
+        </div>
+        
+        <div class="categories-grid">
+            <a href="/articles/?cat=laptops" class="category-card">
+                <div class="category-icon">💻</div>
+                <h3>Laptops</h3>
+                <p>Gaming & Work</p>
+            </a>
+            <a href="/articles/?cat=monitors" class="category-card">
+                <div class="category-icon">🖥️</div>
+                <h3>Monitors</h3>
+                <p>4K & Gaming</p>
+            </a>
+            <a href="/articles/?cat=headphones" class="category-card">
+                <div class="category-icon">🎧</div>
+                <h3>Headphones</h3>
+                <p>Wireless & Wired</p>
+            </a>
+            <a href="/articles/?cat=keyboards" class="category-card">
+                <div class="category-icon">⌨️</div>
+                <h3>Keyboards</h3>
+                <p>Mechanical</p>
+            </a>
+            <a href="/articles/?cat=mice" class="category-card">
+                <div class="category-icon">🖱️</div>
+                <h3>Gaming Mice</h3>
+                <p>Wireless & RGB</p>
+            </a>
+            <a href="/articles/?cat=accessories" class="category-card">
+                <div class="category-icon">🔌</div>
+                <h3>Accessories</h3>
+                <p>Cables & More</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="about">
+        <div class="section-header">
+            <h2>Why TechVerdictPro?</h2>
+            <p>What makes our reviews different</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔬</div>
+                <h3>In-Depth Analysis</h3>
+                <p>Every review includes detailed specifications, real-world testing, and comprehensive comparisons with competing products.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Unbiased Reviews</h3>
+                <p>We provide honest, objective assessments to help you make informed decisions without marketing fluff.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Always Updated</h3>
+                <p>Our AI-powered system ensures you get the latest information on new releases and product updates.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Best Value</h3>
+                <p>Find products that balance performance, features, and price for every budget level.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>За TechWise Pro</h4>
-                    <p style="opacity: 0.7;">AI-автоматизирана платформа за технологични ревюта и препоръки.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Технологии</h4>
-                    <ul>
-                        <li>Claude AI (Anthropic)</li>
-                        <li>SEO оптимизация</li>
-                        <li>Affiliate маркетинг</li>
-                        <li>Google AdSense</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Монетизация</h4>
-                    <ul>
-                        <li>Amazon Associates</li>
-                        <li>eBay Partner Network</li>
-                        <li>AliExpress Affiliate</li>
-                        <li>Display Advertising</li>
-                    </ul>
-                </div>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>TechVerdictPro</h3>
+                <p>Your trusted source for expert tech reviews, buying guides, and product comparisons. We help you make informed decisions on the latest technology products.</p>
             </div>
-            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                <p style="opacity: 0.5;">© 2026 TechWise Pro - AI-Powered Revenue Generation</p>
+            <div class="footer-links">
+                <h4>Reviews</h4>
+                <ul>
+                    <li><a href="/articles/">All Reviews</a></li>
+                    <li><a href="/articles/?cat=laptops">Laptops</a></li>
+                    <li><a href="/articles/?cat=monitors">Monitors</a></li>
+                    <li><a href="/articles/?cat=headphones">Audio</a></li>
+                </ul>
             </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#guides">Buying Guides</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms of Service</a></li>
+                    <li><a href="/disclosure.html">Affiliate Disclosure</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TechVerdictPro. All rights reserved. | AI-Powered Tech Reviews</p>
         </div>
     </footer>
 
     <script>
-        // Simulated counters
-        let articleCount = 47;
-        let revenueToday = 23.50;
-        let revenueMonth = 387.25;
-
-        function updateCounters() {
-            document.getElementById('articles-count').textContent = articleCount;
-            document.getElementById('revenue-today').textContent = '€' + revenueToday.toFixed(2);
-            document.getElementById('revenue-month').textContent = '€' + revenueMonth.toFixed(2);
-        }
-
-        function addLog(message) {
-            const logContainer = document.getElementById('log-container');
-            const now = new Date();
-            const timeStr = now.toISOString().slice(0, 19).replace('T', ' ');
-            
-            const entry = document.createElement('div');
-            entry.className = 'log-entry';
-            entry.innerHTML = `
-                <div class="log-time">${timeStr}</div>
-                <div class="log-message">${message}</div>
-            `;
-            
-            logContainer.insertBefore(entry, logContainer.firstChild);
-            
-            // Keep only last 10 entries
-            while (logContainer.children.length > 10) {
-                logContainer.removeChild(logContainer.lastChild);
+        // Animate article count
+        const targetCount = 47; // Will be dynamic
+        const countElement = document.getElementById('article-count');
+        let currentCount = 0;
+        
+        const interval = setInterval(() => {
+            currentCount++;
+            countElement.textContent = currentCount + '+';
+            if (currentCount >= targetCount) {
+                clearInterval(interval);
             }
-        }
+        }, 30);
 
-        function showLoading() {
-            document.getElementById('loading').style.display = 'block';
-        }
-
-        function hideLoading() {
-            document.getElementById('loading').style.display = 'none';
-        }
-
-        async function generateArticle() {
-            showLoading();
-            addLog('🔄 Стартиране на AI генератор...');
-            
-            setTimeout(() => {
-                addLog('🤖 Claude анализира trending keywords...');
-            }, 1000);
-            
-            setTimeout(() => {
-                addLog('✍️ Генериране на review статия...');
-            }, 2000);
-            
-            setTimeout(() => {
-                articleCount++;
-                revenueToday += Math.random() * 5;
-                revenueMonth += Math.random() * 5;
-                updateCounters();
-                addLog('✅ Нова статия създадена: "Best Gaming Laptops 2026 - Ultimate Comparison"');
-                addLog('🔗 Affiliate линкове добавени (Amazon, eBay)');
-                addLog('📊 SEO оптимизирано за keywords: gaming laptop, best laptop 2026');
-                hideLoading();
-            }, 3500);
-        }
-
-        async function publishContent() {
-            showLoading();
-            addLog('📤 Публикуване на съдържание...');
-            
-            setTimeout(() => {
-                addLog('✅ 3 нови статии публикувани');
-                addLog('🔍 Google indexing заявка изпратена');
-                addLog('📧 Email кампания стартирана към 1,247 subscribers');
-                hideLoading();
-            }, 2000);
-        }
-
-        async function analyzeSEO() {
-            showLoading();
-            addLog('🔍 Стартиране на SEO анализ...');
-            
-            setTimeout(() => {
-                addLog('📊 Analyzing top 100 keywords in tech niche...');
-                addLog('✅ SEO Score: 87/100');
-                addLog('📈 Прогноза: +340 органични посещения този месец');
-                addLog('🎯 Top keywords: wireless headphones, smart watch, laptop reviews');
-                hideLoading();
-            }, 2500);
-        }
-
-        async function checkRevenue() {
-            showLoading();
-            addLog('💰 Проверка на приходи от всички източници...');
-            
-            setTimeout(() => {
-                addLog('💳 Amazon Associates: €187.45 (този месец)');
-                addLog('💳 eBay Partner: €98.30 (този месец)');
-                addLog('💳 Google AdSense: €101.50 (този месец)');
-                addLog('📊 Общо: €387.25 | Projection: €2,000+ след 6 месеца');
-                hideLoading();
-            }, 2000);
-        }
-
-        // Initial counter update
-        updateCounters();
-
-        // Auto-update simulation every 30 seconds
-        setInterval(() => {
-            revenueToday += Math.random() * 2;
-            revenueMonth += Math.random() * 2;
-            updateCounters();
-        }, 30000);
+        // Load articles dynamically
+        // This is a placeholder - you'll need to implement actual article loading
+        window.addEventListener('DOMContentLoaded', () => {
+            // Future: Fetch articles from your articles directory
+            // For now, the page will work with the placeholder
+        });
     </script>
-
 </body>
 </html>
