@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechVerdictPro - Expert Tech Reviews & Buying Guides</title>
-    <meta name="description" content="In-depth tech product reviews, buying guides, and comparisons. Helping you make informed decisions on gaming laptops, monitors, headphones, and more.">
+    <meta name="description" content="In-depth tech product reviews, buying guides, and comparisons. Expert analysis on gaming laptops, monitors, headphones, and more.">
     
-    <!-- Fonts -->
+    <!-- Preconnect to improve performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,9 +18,11 @@
             --light-blue: #E8F1FF;
             --accent: #FF6B35;
             --gray-100: #F8F9FA;
+            --gray-200: #E9ECEF;
             --gray-300: #DEE2E6;
             --gray-600: #6C757D;
             --gray-900: #212529;
+            --success: #28a745;
         }
         
         * {
@@ -46,6 +48,7 @@
             z-index: 100;
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         
         nav {
@@ -92,7 +95,7 @@
         .hero {
             background: linear-gradient(135deg, var(--navy) 0%, #1a2549 100%);
             color: white;
-            padding: 8rem 2rem 6rem;
+            padding: 6rem 2rem 5rem;
             position: relative;
             overflow: hidden;
         }
@@ -107,7 +110,6 @@
             background: 
                 radial-gradient(circle at 20% 30%, rgba(46, 124, 246, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
-            pointer-events: none;
         }
         
         .hero-content {
@@ -119,52 +121,30 @@
         
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
+            font-size: 3.5rem;
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 1.5rem;
             letter-spacing: -0.03em;
-            animation: fadeInUp 0.8s ease-out;
         }
         
         .hero h1 span {
             color: var(--tech-blue);
-            display: block;
         }
         
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             max-width: 600px;
             opacity: 0.9;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             font-weight: 300;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: var(--tech-blue);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.05rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 20px rgba(46, 124, 246, 0.3);
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(46, 124, 246, 0.4);
         }
         
         /* Stats */
         .stats {
             background: white;
-            border-bottom: 1px solid var(--gray-300);
             padding: 3rem 2rem;
+            border-bottom: 1px solid var(--gray-300);
         }
         
         .stats-grid {
@@ -192,16 +172,15 @@
             letter-spacing: 0.05em;
         }
         
-        /* Categories */
-        .categories {
-            background: var(--gray-100);
-            padding: 5rem 2rem;
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
         }
         
         .section-header {
-            max-width: 1400px;
-            margin: 0 auto 3rem;
-            text-align: center;
+            margin-bottom: 3rem;
         }
         
         .section-header h2 {
@@ -217,9 +196,176 @@
             font-size: 1.1rem;
         }
         
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid var(--gray-200);
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+        
+        .tab:hover {
+            color: var(--tech-blue);
+        }
+        
+        .tab.active {
+            color: var(--tech-blue);
+            border-bottom-color: var(--tech-blue);
+        }
+        
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border: 1px solid var(--gray-300);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, #ffffff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--tech-blue);
+            border-bottom: 1px solid var(--gray-300);
+        }
+        
+        .article-content {
+            padding: 1.8rem;
+        }
+        
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .article-category {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--tech-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .article-views {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        
+        .article-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .article-date {
+            color: var(--gray-600);
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .article-excerpt {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--gray-300);
+            border-top-color: var(--tech-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gray-600);
+        }
+        
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+        }
+        
+        /* Categories */
+        .categories {
+            background: var(--gray-100);
+            padding: 5rem 2rem;
+            margin-top: 4rem;
+        }
+        
         .categories-grid {
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 3rem auto 0;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
@@ -230,16 +376,15 @@
             padding: 2rem;
             border-radius: 12px;
             text-align: center;
-            text-decoration: none;
-            color: var(--gray-900);
+            cursor: pointer;
             transition: all 0.3s;
             border: 2px solid transparent;
-            display: block;
         }
         
         .category-card:hover {
             border-color: var(--tech-blue);
             transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         
         .category-icon {
@@ -249,55 +394,13 @@
         
         .category-card h3 {
             font-weight: 600;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
         }
         
-        .category-card p {
-            font-size: 0.85rem;
+        .category-count {
+            font-size: 0.9rem;
             color: var(--gray-600);
-        }
-        
-        /* Features */
-        .features {
-            max-width: 1400px;
-            margin: 5rem auto;
-            padding: 0 2rem;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-        
-        .feature-card {
-            text-align: center;
-        }
-        
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--tech-blue) 0%, #5b9df9 100%);
-            color: white;
-            font-size: 2rem;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 8px 20px rgba(46, 124, 246, 0.3);
-        }
-        
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .feature-card p {
-            color: var(--gray-600);
-            line-height: 1.7;
         }
         
         /* Footer */
@@ -360,18 +463,6 @@
             font-size: 0.9rem;
         }
         
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -386,10 +477,24 @@
                 display: none;
             }
             
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+            
+            .tabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+            }
+        }
+        
+        /* Utilities */
+        .hidden {
+            display: none !important;
         }
     </style>
 </head>
@@ -399,7 +504,7 @@
         <nav>
             <a href="/" class="logo">TechVerdict<span>Pro</span></a>
             <ul>
-                <li><a href="/articles/">All Reviews</a></li>
+                <li><a href="#latest">Latest</a></li>
                 <li><a href="#categories">Categories</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
@@ -413,8 +518,7 @@
                 Expert Tech Reviews<br>
                 <span>You Can Trust</span>
             </h1>
-            <p>In-depth product reviews, buying guides, and comparisons to help you make informed decisions on gaming laptops, monitors, headphones, and more.</p>
-            <a href="/articles/" class="cta-button">Browse All Reviews</a>
+            <p>In-depth product reviews, buying guides, and comparisons. Professional analysis to help you make informed decisions.</p>
         </div>
     </section>
 
@@ -422,11 +526,11 @@
     <section class="stats">
         <div class="stats-grid">
             <div class="stat-item">
-                <h3>50+</h3>
+                <h3 id="total-articles">0</h3>
                 <p>Expert Reviews</p>
             </div>
             <div class="stat-item">
-                <h3>35+</h3>
+                <h3 id="total-categories">0</h3>
                 <p>Categories</p>
             </div>
             <div class="stat-item">
@@ -440,80 +544,52 @@
         </div>
     </section>
 
+    <!-- Main Content -->
+    <main id="latest">
+        <div class="section-header">
+            <h2>Browse Reviews</h2>
+            <p>Find the perfect tech product for your needs</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" data-filter="latest">Latest Reviews</button>
+            <button class="tab" data-filter="popular">Most Popular</button>
+            <button class="tab" data-filter="all">All Articles</button>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading articles...</p>
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="articles-grid hidden" id="articles-container">
+            <!-- Articles populated by JavaScript -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state hidden" id="empty-state">
+            <h3>No Articles Found</h3>
+            <p>Check back soon for new reviews!</p>
+        </div>
+    </main>
+
     <!-- Categories -->
     <section class="categories" id="categories">
-        <div class="section-header">
+        <div class="section-header" style="max-width: 1400px; margin: 0 auto;">
             <h2>Browse by Category</h2>
-            <p>Find exactly what you're looking for</p>
+            <p>Find reviews in your area of interest</p>
         </div>
         
-        <div class="categories-grid">
-            <a href="/articles/" class="category-card">
-                <div class="category-icon">💻</div>
-                <h3>Laptops</h3>
-                <p>Gaming & Work</p>
-            </a>
-            <a href="/articles/" class="category-card">
-                <div class="category-icon">🖥️</div>
-                <h3>Monitors</h3>
-                <p>4K & Gaming</p>
-            </a>
-            <a href="/articles/" class="category-card">
-                <div class="category-icon">🎧</div>
-                <h3>Headphones</h3>
-                <p>Wireless & Wired</p>
-            </a>
-            <a href="/articles/" class="category-card">
-                <div class="category-icon">⌨️</div>
-                <h3>Keyboards</h3>
-                <p>Mechanical</p>
-            </a>
-            <a href="/articles/" class="category-card">
-                <div class="category-icon">🖱️</div>
-                <h3>Gaming Mice</h3>
-                <p>Wireless & RGB</p>
-            </a>
-            <a href="/articles/" class="category-card">
-                <div class="category-icon">📷</div>
-                <h3>Webcams</h3>
-                <p>Streaming</p>
-            </a>
-        </div>
-    </section>
-
-    <!-- Features -->
-    <section class="features" id="about">
-        <div class="section-header">
-            <h2>Why TechVerdictPro?</h2>
-            <p>What makes our reviews different</p>
-        </div>
-        
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🔬</div>
-                <h3>In-Depth Analysis</h3>
-                <p>Every review includes detailed specifications, real-world testing, and comprehensive comparisons with competing products.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h3>Unbiased Reviews</h3>
-                <p>We provide honest, objective assessments to help you make informed decisions without marketing fluff.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Always Updated</h3>
-                <p>Our AI-powered system ensures you get the latest information on new releases and product updates.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💰</div>
-                <h3>Best Value</h3>
-                <p>Find products that balance performance, features, and price for every budget level.</p>
-            </div>
+        <div class="categories-grid" id="categories-grid">
+            <!-- Categories populated by JavaScript -->
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="about">
         <div class="footer-content">
             <div class="footer-about">
                 <h3>TechVerdictPro</h3>
@@ -522,31 +598,250 @@
             <div class="footer-links">
                 <h4>Reviews</h4>
                 <ul>
-                    <li><a href="/articles/">All Reviews</a></li>
-                    <li><a href="/articles/">Laptops</a></li>
-                    <li><a href="/articles/">Monitors</a></li>
-                    <li><a href="/articles/">Audio</a></li>
+                    <li><a href="#latest">Latest Reviews</a></li>
+                    <li><a href="#categories">All Categories</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Resources</h4>
                 <ul>
-                    <li><a href="#categories">Categories</a></li>
                     <li><a href="#about">About Us</a></li>
+                    <li><a href="#categories">Categories</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Legal</h4>
                 <ul>
                     <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Affiliate Disclosure</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Disclosure</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 TechVerdictPro. All rights reserved. | AI-Powered Tech Reviews</p>
+            <p>&copy; 2026 TechVerdictPro. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- JavaScript Application -->
+    <script>
+        // TechVerdictPro - Production-Grade Frontend Application
+        // Architecture: MVC Pattern, Progressive Enhancement, Performance Optimized
+        
+        const App = {
+            // State management
+            state: {
+                articles: [],
+                categories: {},
+                currentFilter: 'latest',
+                isLoading: true
+            },
+            
+            // Configuration
+            config: {
+                manifestUrl: '/articles-manifest.json',
+                articlesPerPage: 12,
+                categoryIcons: {
+                    laptop: '💻',
+                    monitor: '🖥️',
+                    headphone: '🎧',
+                    keyboard: '⌨️',
+                    mouse: '🖱️',
+                    webcam: '📷',
+                    speaker: '🔊',
+                    phone: '📱',
+                    watch: '⌚',
+                    default: '🔧'
+                }
+            },
+            
+            // Initialize application
+            async init() {
+                console.log('🚀 TechVerdictPro initializing...');
+                await this.loadArticles();
+                this.setupEventListeners();
+                this.render();
+            },
+            
+            // Load articles from manifest
+            async loadArticles() {
+                try {
+                    const response = await fetch(this.config.manifestUrl);
+                    
+                    if (!response.ok) {
+                        throw new Error('Manifest not found');
+                    }
+                    
+                    const data = await response.json();
+                    this.state.articles = data.articles || [];
+                    this.processCategories();
+                    this.state.isLoading = false;
+                    
+                    console.log(`✅ Loaded ${this.state.articles.length} articles`);
+                } catch (error) {
+                    console.warn('⚠️ Could not load manifest:', error.message);
+                    console.log('📝 Using fallback: empty state');
+                    this.state.isLoading = false;
+                }
+            },
+            
+            // Process articles into categories
+            processCategories() {
+                this.state.categories = {};
+                
+                this.state.articles.forEach(article => {
+                    const cat = article.category || 'other';
+                    if (!this.state.categories[cat]) {
+                        this.state.categories[cat] = [];
+                    }
+                    this.state.categories[cat].push(article);
+                });
+            },
+            
+            // Get filtered articles
+            getFilteredArticles() {
+                let articles = [...this.state.articles];
+                
+                switch (this.state.currentFilter) {
+                    case 'latest':
+                        return articles.slice(0, 8); // Latest 8
+                    case 'popular':
+                        return articles.sort((a, b) => (b.views || 0) - (a.views || 0)).slice(0, 8);
+                    case 'all':
+                        return articles;
+                    default:
+                        // Category filter
+                        return this.state.categories[this.state.currentFilter] || [];
+                }
+            },
+            
+            // Render application
+            render() {
+                this.renderStats();
+                this.renderArticles();
+                this.renderCategories();
+            },
+            
+            // Render statistics
+            renderStats() {
+                document.getElementById('total-articles').textContent = this.state.articles.length + '+';
+                document.getElementById('total-categories').textContent = Object.keys(this.state.categories).length + '+';
+            },
+            
+            // Render articles grid
+            renderArticles() {
+                const container = document.getElementById('articles-container');
+                const loading = document.getElementById('loading');
+                const emptyState = document.getElementById('empty-state');
+                
+                if (this.state.isLoading) {
+                    loading.classList.remove('hidden');
+                    container.classList.add('hidden');
+                    emptyState.classList.add('hidden');
+                    return;
+                }
+                
+                loading.classList.add('hidden');
+                
+                const articles = this.getFilteredArticles();
+                
+                if (articles.length === 0) {
+                    emptyState.classList.remove('hidden');
+                    container.classList.add('hidden');
+                    return;
+                }
+                
+                emptyState.classList.add('hidden');
+                container.classList.remove('hidden');
+                
+                container.innerHTML = articles.map(article => this.createArticleCard(article)).join('');
+            },
+            
+            // Create article card HTML
+            createArticleCard(article) {
+                const icon = this.config.categoryIcons[article.category] || this.config.categoryIcons.default;
+                const date = new Date(article.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                return `
+                    <a href="${article.url}" class="article-card">
+                        <div class="article-image">${icon}</div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-category">${article.category}</span>
+                                ${article.views ? `<span class="article-views">👁️ ${article.views}</span>` : ''}
+                            </div>
+                            <h3>${article.title}</h3>
+                            <p class="article-date">${date}</p>
+                            <p class="article-excerpt">${article.excerpt || 'Expert review with in-depth analysis, specifications, and buying recommendations.'}</p>
+                        </div>
+                    </a>
+                `;
+            },
+            
+            // Render categories
+            renderCategories() {
+                const grid = document.getElementById('categories-grid');
+                
+                const categories = Object.entries(this.state.categories).map(([name, articles]) => {
+                    const icon = this.config.categoryIcons[name] || this.config.categoryIcons.default;
+                    const displayName = name.charAt(0).toUpperCase() + name.slice(1) + 's';
+                    
+                    return {
+                        name,
+                        displayName,
+                        icon,
+                        count: articles.length
+                    };
+                }).sort((a, b) => b.count - a.count);
+                
+                grid.innerHTML = categories.map(cat => `
+                    <div class="category-card" data-category="${cat.name}">
+                        <div class="category-icon">${cat.icon}</div>
+                        <h3>${cat.displayName}</h3>
+                        <p class="category-count">${cat.count} reviews</p>
+                    </div>
+                `).join('');
+            },
+            
+            // Setup event listeners
+            setupEventListeners() {
+                // Tab switching
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                        e.target.classList.add('active');
+                        this.state.currentFilter = e.target.dataset.filter;
+                        this.renderArticles();
+                    });
+                });
+                
+                // Category clicks (event delegation)
+                document.getElementById('categories-grid').addEventListener('click', (e) => {
+                    const card = e.target.closest('.category-card');
+                    if (!card) return;
+                    
+                    const category = card.dataset.category;
+                    this.state.currentFilter = category;
+                    
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    this.renderArticles();
+                    
+                    // Scroll to articles
+                    document.getElementById('latest').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        };
+        
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => App.init());
+        } else {
+            App.init();
+        }
+    </script>
 </body>
 </html>
