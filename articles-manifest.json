@@ -1,7 +1,115 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-02-28T21:11:16.883Z",
+  "lastUpdated": "2026-03-01T21:33:38.938Z",
   "articles": [
+    {
+      "id": "1772395904980",
+      "title": "Best Studio Tablet Mounts Under $300: Pro-Grade Arms Tested 2024",
+      "url": "/articles/1772395904980-professional-studio-grade-articulating-tablet-mount-under-300.html",
+      "category": "tech",
+      "date": "2026-03-01",
+      "excerpt": "Professional review of the top studio-grade tablet mounts under $300. Real testing of articulating arms for content creators and professionals.",
+      "views": 0
+    },
+    {
+      "id": "1772395830205",
+      "title": "Best Premium Tablet Stands 2024: Aluminum Rotating Stands Under $150",
+      "url": "/articles/1772395830205-premium-aluminum-rotating-tablet-stand-for-professionals-under-150.html",
+      "category": "tech",
+      "date": "2026-03-01",
+      "excerpt": "Professional aluminum tablet stands tested. Top rotating models under $150 with detailed comparisons, specs, and buying advice from tech experts.",
+      "views": 0
+    },
+    {
+      "id": "1772395751218",
+      "title": "Best Budget Fitness Trackers Under $75 for Daily Activity 2026",
+      "url": "/articles/1772395751218-best-budget-fitness-tracker-under-75-for-daily-activity-monitoring-2026.html",
+      "category": "monitor",
+      "date": "2026-03-01",
+      "excerpt": "Top budget fitness trackers under $75 tested by tech experts. Compare Fitbit Inspire 3, Amazfit Band 7, and more for daily activity tracking in 2026.",
+      "views": 0
+    },
+    {
+      "id": "1772395676348",
+      "title": "Best Thermal Gaming Phone Cases Under $150: 2026 Review",
+      "url": "/articles/1772395676348-professional-grade-thermal-management-case-for-mobile-gaming-under-150-2026.html",
+      "category": "tech",
+      "date": "2026-03-01",
+      "excerpt": "Professional thermal phone cases for mobile gaming tested. Compare top models under $150 with cooling performance data and real-world gaming tests.",
+      "views": 0
+    },
+    {
+      "id": "1772378324072",
+      "title": "Best Budget 4K Monitors Under $300: 2026's Top Picks Tested",
+      "url": "/articles/1772378324072-best-budget-4k-monitor-under-300-2026.html",
+      "category": "monitor",
+      "date": "2026-03-01",
+      "excerpt": "Expert review of the best budget 4K monitors under $300 in 2026. Real-world testing, detailed specs, and buying advice from tech pros.",
+      "views": 0
+    },
+    {
+      "id": "1772378262464",
+      "title": "Best Smart Thermostats 2024: AI-Powered Energy Savings Under $500",
+      "url": "/articles/1772378262464-premium-ai-powered-smart-thermostat-for-energy-efficiency-under-500.html",
+      "category": "tech",
+      "date": "2026-03-01",
+      "excerpt": "Top AI-powered smart thermostats under $500 tested. Compare Ecobee SmartThermostat, Nest Learning, Honeywell T9 for maximum energy savings in 2024.",
+      "views": 0
+    },
+    {
+      "id": "1772378197055",
+      "title": "Best 4K TVs for Beginners Under $800: Easy Setup Guide 2026",
+      "url": "/articles/1772378197055-best-4k-tv-for-beginners-under-800-with-easy-setup-2026.html",
+      "category": "tech",
+      "date": "2026-03-01",
+      "excerpt": "Find the perfect beginner-friendly 4K TV under $800. Expert reviews of TCL, Hisense & Roku models with simple setup guides for new buyers.",
+      "views": 0
+    },
+    {
+      "id": "1772378118724",
+      "title": "Best Premium Thunderbolt 4 USB-C Hubs Under $300 in 2026",
+      "url": "/articles/1772378118724-premium-thunderbolt-4-usb-c-hub-with-8k-display-support-under-300-2026.html",
+      "category": "monitor",
+      "date": "2026-03-01",
+      "excerpt": "Top Thunderbolt 4 USB-C hubs with 8K display support under $300. Expert review of CalDigit TS4, Anker 778, OWC Thunderbolt Hub, and more premium options.",
+      "views": 0
+    },
+    {
+      "id": "1772347723431",
+      "title": "Best Beginner-Friendly Smartwatches for Seniors 2026",
+      "url": "/articles/1772347723431-best-beginner-friendly-smartwatch-for-seniors-2026.html",
+      "category": "watch",
+      "date": "2026-03-01",
+      "excerpt": "Expert review of the most senior-friendly smartwatches in 2026. Easy-to-use models with large displays, health monitoring, and emergency features.",
+      "views": 0
+    },
+    {
+      "id": "1772347657451",
+      "title": "Best Smart Home Hubs Under $500 with Matter Support 2026",
+      "url": "/articles/1772347657451-professional-smart-home-hub-with-matter-integration-under-500-2026.html",
+      "category": "tech",
+      "date": "2026-03-01",
+      "excerpt": "Our expert review of top smart home hubs under $500 featuring Matter integration. Compare Samsung SmartThings, Hubitat, and more for 2026.",
+      "views": 0
+    },
+    {
+      "id": "1772347584539",
+      "title": "Best Wooden Tablet Stands Under $150: Professional 2024 Review",
+      "url": "/articles/1772347584539-premium-wooden-desktop-tablet-stand-for-professionals-under-150.html",
+      "category": "tech",
+      "date": "2026-03-01",
+      "excerpt": "Expert review of premium wooden tablet stands for professionals. Compare top models under $150 with detailed analysis and buying advice.",
+      "views": 0
+    },
+    {
+      "id": "1772347513649",
+      "title": "Best Broadcast Capture Cards Under $1000: 2024 Studio Guide",
+      "url": "/articles/1772347513649-professional-multi-input-capture-card-for-broadcast-studios-under-1000.html",
+      "category": "tech",
+      "date": "2026-03-01",
+      "excerpt": "Professional multi-input capture cards for broadcast studios under $1000. Expert reviews of Blackmagic DeckLink, AJA Kona, and top alternatives.",
+      "views": 0
+    },
     {
       "id": "1772312223141",
       "title": "Best Budget Fitness Trackers Under $75 2026: Daily Activity Guide",
