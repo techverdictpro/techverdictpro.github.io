@@ -1,7 +1,151 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-03-10T19:55:18.675Z",
+  "lastUpdated": "2026-03-12T04:01:36.606Z",
   "articles": [
+    {
+      "id": "1773287602951",
+      "title": "Best Wireless Lavalier Microphones Under $500 in 2026",
+      "url": "/articles/1773287602951-best-overall-wireless-lavalier-microphone-system-under-500-2026.html",
+      "category": "phone",
+      "date": "2026-03-12",
+      "excerpt": "Find the top wireless lavalier microphones under $500 in 2026. Expert reviews of the best lav mics for content creators, filmmakers, and professionals.",
+      "views": 0
+    },
+    {
+      "id": "1773287547689",
+      "title": "Best Ultra-Light Gaming Mice for Competitive Esports 2026",
+      "url": "/articles/1773287547689-premium-ultra-lightweight-gaming-mouse-for-competitive-esports-under-200.html",
+      "category": "mouse",
+      "date": "2026-03-12",
+      "excerpt": "Expert-tested ultra-lightweight gaming mice under $200. Find the perfect balance of performance, weight, and durability for competitive esports gaming.",
+      "views": 0
+    },
+    {
+      "id": "1773287488759",
+      "title": "Best 8K Dashcams Under $1000: 2026 Professional Review",
+      "url": "/articles/1773287488759-professional-grade-8k-dashcam-under-1000-with-gps-tracking-2026.html",
+      "category": "tech",
+      "date": "2026-03-12",
+      "excerpt": "Professional review of the top 8K dashcams under $1000 in 2026. GPS tracking, night vision, and pro-grade features compared by tech experts.",
+      "views": 0
+    },
+    {
+      "id": "1773287434554",
+      "title": "Best Studio Monitor Soundbars for Creators 2026: Pro Review",
+      "url": "/articles/1773287434554-professional-grade-studio-monitor-soundbar-for-content-creators-and-musicians.html",
+      "category": "monitor",
+      "date": "2026-03-12",
+      "excerpt": "Professional studio monitor soundbars tested for content creators and musicians. Our expert review covers the top models for accurate audio monitoring.",
+      "views": 0
+    },
+    {
+      "id": "1773260887066",
+      "title": "Best Drawing Tablets 2026: Wacom Cintiq Pro Review & Top Picks",
+      "url": "/articles/1773260887066-premium-wacom-cintiq-pro-display-drawing-tablet-for-professional-artists-2026.html",
+      "category": "monitor",
+      "date": "2026-03-11",
+      "excerpt": "Expert review of the 2026 Wacom Cintiq Pro drawing tablet plus top alternatives. In-depth testing, specs, and buying guide for digital artists.",
+      "views": 0
+    },
+    {
+      "id": "1773260824273",
+      "title": "Best RTX 5080 Graphics Cards for 4K Gaming Under $1000 (2026)",
+      "url": "/articles/1773260824273-premium-rtx-5080-graphics-card-for-4k-gaming-under-1000-2026.html",
+      "category": "tech",
+      "date": "2026-03-11",
+      "excerpt": "Our experts tested the top RTX 5080 graphics cards under $1000 for 4K gaming in 2026. Find the best GPU for your budget and performance needs.",
+      "views": 0
+    },
+    {
+      "id": "1773260770681",
+      "title": "Best Plug-and-Play Webcams for Beginners Under $150 (2026)",
+      "url": "/articles/1773260770681-top-plug-and-play-webcam-for-beginners-under-150-2026.html",
+      "category": "webcam",
+      "date": "2026-03-11",
+      "excerpt": "Find the perfect beginner webcam under $150. Expert reviews of plug-and-play models with easy setup, great video quality, and reliable performance.",
+      "views": 0
+    },
+    {
+      "id": "1773260714953",
+      "title": "Best Premium Pen Display Tablets 2026: Pro Artists Guide",
+      "url": "/articles/1773260714953-premium-pen-display-tablet-with-4k-screen-for-professional-artists.html",
+      "category": "monitor",
+      "date": "2026-03-11",
+      "excerpt": "We tested top 4K pen display tablets for professional artists. Our comprehensive review covers performance, features, and value to help you choose.",
+      "views": 0
+    },
+    {
+      "id": "1773243927332",
+      "title": "Best Portable Bluetooth Speakers for Outdoor Adventures 2026",
+      "url": "/articles/1773243927332-best-overall-portable-bluetooth-speaker-for-outdoor-adventures-2026.html",
+      "category": "speaker",
+      "date": "2026-03-11",
+      "excerpt": "Expert-tested portable Bluetooth speakers built for outdoor adventures. Our top picks deliver rugged durability, powerful sound, and all-day battery life.",
+      "views": 0
+    },
+    {
+      "id": "1773243858588",
+      "title": "Best Professional Studio Bluetooth Speakers 2026: Under $1000",
+      "url": "/articles/1773243858588-professional-studio-grade-bluetooth-monitor-speaker-under-1000-2026.html",
+      "category": "monitor",
+      "date": "2026-03-11",
+      "excerpt": "Professional studio-grade Bluetooth speakers under $1000 tested. Expert reviews of wireless monitors for audio production, mixing, and critical listening.",
+      "views": 0
+    },
+    {
+      "id": "1773243795446",
+      "title": "Best Ultrawide Monitors for Productivity Under $500 2026",
+      "url": "/articles/1773243795446-best-overall-ultrawide-monitor-for-productivity-under-500-2026.html",
+      "category": "monitor",
+      "date": "2026-03-11",
+      "excerpt": "Top ultrawide monitors under $500 for 2026. Expert reviews, detailed comparisons, and buying guide to find your perfect productivity display.",
+      "views": 0
+    },
+    {
+      "id": "1773243736039",
+      "title": "Best Budget USB Microphones Under $100 for Streaming 2026",
+      "url": "/articles/1773243736039-best-budget-usb-microphone-under-100-for-streaming-2026.html",
+      "category": "phone",
+      "date": "2026-03-11",
+      "excerpt": "Discover the top budget USB microphones under $100 for streaming in 2026. Expert reviews, comparisons, and buying guide for content creators.",
+      "views": 0
+    },
+    {
+      "id": "1773200694458",
+      "title": "Best Budget VR Headsets Under $200 for Casual Gaming 2026",
+      "url": "/articles/1773200694458-best-budget-vr-headset-under-200-for-casual-gaming-2026.html",
+      "category": "tech",
+      "date": "2026-03-11",
+      "excerpt": "Find the perfect budget VR headset under $200 for casual gaming in 2026. Expert reviews, comparisons, and buying advice from tech professionals.",
+      "views": 0
+    },
+    {
+      "id": "1773200643858",
+      "title": "Best Budget VR Headsets Under $100 for Gaming 2026",
+      "url": "/articles/1773200643858-best-budget-vr-headset-under-100-for-casual-gaming-2026.html",
+      "category": "tech",
+      "date": "2026-03-11",
+      "excerpt": "Find the best budget VR headsets under $100 in 2026. Expert reviews, detailed comparisons, and buying guides for casual gamers on a budget.",
+      "views": 0
+    },
+    {
+      "id": "1773200586417",
+      "title": "Best Professional Studio Ring Lights 2026: Expert Review",
+      "url": "/articles/1773200586417-professional-studio-ring-light-with-remote-control-under-800-2026.html",
+      "category": "tech",
+      "date": "2026-03-11",
+      "excerpt": "Professional studio ring lights tested and reviewed. Find the best models under $800 with remote control features for content creators and photographers.",
+      "views": 0
+    },
+    {
+      "id": "1773200531031",
+      "title": "Best 4K HDR TVs for Video Editing & Content Creation 2026",
+      "url": "/articles/1773200531031-professional-4k-hdr-tv-for-content-creators-and-video-editing-2026.html",
+      "category": "tech",
+      "date": "2026-03-11",
+      "excerpt": "Professional 4K HDR TVs tested for video editing and content creation. Expert reviews of color accuracy, input lag, and workflow features for creators.",
+      "views": 0
+    },
     {
       "id": "1773171474880",
       "title": "Best Mesh Office Chair Under $500 for Remote Work 2026",
