@@ -1,0 +1,6 @@
+node_modules/ 
+*BACKUP* 
+*old*.js 
+.env 
+logs/ 
+github-token* 

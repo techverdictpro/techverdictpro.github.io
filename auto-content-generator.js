@@ -1,8 +1,8 @@
 require('dotenv').config();
 
-// TechVerdictPro - Professional Content Generator
-// Built with: Software Engineering Excellence + Journalism Standards + Marketing Strategy
-// Version: 2.0 - Production Grade
+// TechVerdictPro - Professional Content Generator v3.0
+// FIXED: Proper paragraph formatting + Journalistic standards + GEO optimization
+// Built by: Expert Tech Journalist + Senior Software Engineer
 
 const Anthropic = require('@anthropic-ai/sdk');
 const fs = require('fs').promises;
@@ -22,7 +22,7 @@ const CONFIG = {
     minWordCount: 1800,
     maxWordCount: 2500,
     
-    // Niches
+    // Niches - Tech Products 2026
     niches: [
         'gaming laptops',
         'wireless headphones',
@@ -48,51 +48,33 @@ const CONFIG = {
         'ring lights',
         'streaming cameras',
         'mesh WiFi systems',
-        'smart home devices',
-        'tablet stands',
-        'cable management',
-        'monitor arms',
-        'wireless chargers',
-        'phone screen protectors',
-        'laptop sleeves',
-        'external batteries',
-        'tech backpacks',
-        'gaming headsets',
-        'capture cards'
+        'drawing tablets',
+        'NAS drives',
+        'VR headsets',
+        'dashcams',
+        'action cameras',
+        'soundbars'
     ],
-    
-    // Affiliate Settings (Amazon ONLY - highest conversion)
-    amazonTag: process.env.AMAZON_TAG || 'techverdictpro-20',
     
     // Output
     outputDir: './generated-content',
+    
+    // Amazon Affiliate
+    amazonTag: 'techverdictpro-20'
 };
 
 // ============================================
-// CLAUDE AI CLIENT
-// ============================================
-
-const anthropic = new Anthropic({
-    apiKey: CONFIG.anthropicApiKey,
-});
-
-// ============================================
-// PROFESSIONAL ARTICLE CSS TEMPLATE
+// PROFESSIONAL CSS - NYTimes/Wirecutter Standard
 // ============================================
 
 const ARTICLE_CSS = `
-/* TechVerdictPro - Professional Editorial Design */
-/* Typography: Merriweather (serif) + Open Sans (sans-serif) */
-
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;600;700&display=swap');
-
+/* Professional Typography System */
 :root {
     --primary: #1a1a1a;
     --secondary: #4a4a4a;
-    --accent: #FF9900;
-    --light-gray: #f8f9fa;
+    --accent: #2E7CF6;
+    --light-gray: #f5f5f5;
     --border: #e0e0e0;
-    --link-blue: #0066cc;
 }
 
 * {
@@ -102,40 +84,46 @@ const ARTICLE_CSS = `
 }
 
 body {
-    font-family: 'Merriweather', Georgia, serif;
-    font-size: 18px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 20px;
     line-height: 1.8;
     color: var(--primary);
     background: #ffffff;
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 3rem 2rem;
 }
 
-/* Typography Hierarchy */
+/* Typography Hierarchy - Professional Standard */
 h1 {
-    font-family: 'Merriweather', serif;
-    font-size: 2.5rem;
-    font-weight: 900;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
     line-height: 1.2;
     color: var(--primary);
-    margin: 0 0 1.5rem 0;
-    letter-spacing: -0.02em;
+    margin: 0 0 2rem 0;
+    letter-spacing: -0.03em;
 }
 
 h2 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 1.8rem;
     font-weight: 700;
     line-height: 1.3;
     color: var(--primary);
     margin: 3rem 0 1.5rem 0;
-    border-bottom: 3px solid var(--accent);
-    padding-bottom: 0.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+h2:first-of-type {
+    margin-top: 2rem;
+    border-top: none;
+    padding-top: 0;
 }
 
 h3 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     font-size: 1.4rem;
     font-weight: 600;
     line-height: 1.4;
@@ -143,10 +131,15 @@ h3 {
     margin: 2.5rem 0 1rem 0;
 }
 
-/* Paragraph Styling */
+/* CRITICAL: Paragraph Spacing - Proper Readability */
 p {
     margin: 0 0 1.5rem 0;
-    font-weight: 300;
+    font-weight: 400;
+    line-height: 1.8;
+}
+
+p:last-child {
+    margin-bottom: 0;
 }
 
 /* Strong emphasis */
@@ -155,23 +148,34 @@ strong {
     color: var(--primary);
 }
 
-/* Lists */
+/* Lists - Proper spacing */
 ul, ol {
-    margin: 1.5rem 0 1.5rem 2rem;
+    margin: 1.5rem 0 2rem 2rem;
+    line-height: 1.8;
 }
 
 li {
-    margin-bottom: 0.8rem;
-    line-height: 1.7;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
 }
 
-/* Tables */
+li:last-child {
+    margin-bottom: 0;
+}
+
+/* Nested lists */
+li ul, li ol {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+/* Tables - Professional design */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 2rem 0;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 0.95rem;
+    margin: 2.5rem 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.9rem;
 }
 
 th {
@@ -185,122 +189,119 @@ th {
 td {
     padding: 1rem;
     border-bottom: 1px solid var(--border);
+    vertical-align: top;
+}
+
+tr:last-child td {
+    border-bottom: none;
 }
 
 /* Blockquotes */
 blockquote {
     border-left: 4px solid var(--accent);
     padding-left: 1.5rem;
-    margin: 2rem 0;
+    margin: 2.5rem 0;
     font-style: italic;
     color: var(--secondary);
+    font-size: 1.1em;
 }
 
-/* Amazon Affiliate Button - Strategic Placement */
-.amazon-cta {
-    margin: 3rem 0;
-    padding: 2rem;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    border: 2px solid var(--border);
-    border-radius: 8px;
-    text-align: center;
-}
-
-.amazon-button {
-    display: inline-block;
-    background: linear-gradient(135deg, #FF9900 0%, #FF7700 100%);
-    color: white;
-    padding: 1.2rem 3rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
-    transition: all 0.3s ease;
-    border: none;
-}
-
-.amazon-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 153, 0, 0.4);
-}
-
-/* Pros/Cons Boxes */
-.pros-cons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.pros-box, .cons-box {
-    padding: 1.5rem;
-    border-radius: 8px;
-}
-
-.pros-box {
-    background: #e8f5e9;
-    border-left: 4px solid #4caf50;
-}
-
-.cons-box {
-    background: #ffebee;
-    border-left: 4px solid #f44336;
-}
-
-.pros-box h4, .cons-box h4 {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
-
-/* FAQ Section */
-.faq-item {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: var(--light-gray);
-    border-radius: 8px;
-}
-
-.faq-question {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--primary);
-    margin-bottom: 0.8rem;
-}
-
-.faq-answer {
-    font-weight: 300;
-    line-height: 1.7;
-}
-
-/* Meta Info */
+/* Meta information */
 .article-meta {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 0.9rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem;
     color: var(--secondary);
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--border);
 }
 
-/* Disclosure */
-.disclosure {
-    margin: 3rem 0;
-    padding: 1.5rem;
-    background: var(--light-gray);
+/* Quick Answer Box - GEO Optimized */
+.quick-answer {
+    background: #e8f4f8;
+    padding: 1.5rem 2rem;
+    margin: 2rem 0 3rem 0;
     border-left: 4px solid var(--accent);
-    font-size: 0.9rem;
-    font-family: 'Open Sans', sans-serif;
-    color: var(--secondary);
+    border-radius: 4px;
 }
 
-/* Responsive */
+.quick-answer h2 {
+    color: var(--accent);
+    font-size: 1.4rem;
+    margin: 0 0 1rem 0;
+    border: none;
+    padding: 0;
+}
+
+.quick-answer p {
+    font-size: 1.05rem;
+    margin-bottom: 0;
+}
+
+/* Key Takeaways */
+.key-takeaways {
+    background: #fff3cd;
+    padding: 1.5rem 2rem;
+    margin: 2.5rem 0;
+    border-left: 4px solid #ffc107;
+    border-radius: 4px;
+}
+
+.key-takeaways h2 {
+    color: #856404;
+    font-size: 1.4rem;
+    margin: 0 0 1rem 0;
+    border: none;
+    padding: 0;
+}
+
+.key-takeaways ul {
+    margin: 0;
+}
+
+/* Amazon Affiliate Buttons - Strategic Placement */
+.amazon-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF9900 0%, #ff8800 100%);
+    color: #000000;
+    padding: 14px 32px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+    transition: all 0.3s ease;
+    margin: 1.5rem 0;
+    border: none;
+}
+
+.amazon-cta:hover {
+    background: linear-gradient(135deg, #ff8800 0%, #ff7700 100%);
+    box-shadow: 0 6px 20px rgba(255, 153, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.amazon-cta:active {
+    transform: translateY(0);
+}
+
+/* Disclosure */
+.disclosure {
+    margin-top: 4rem;
+    padding: 1.5rem;
+    background: var(--light-gray);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--secondary);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
     body {
-        font-size: 16px;
+        font-size: 18px;
         padding: 2rem 1.5rem;
     }
     
@@ -316,126 +317,265 @@ blockquote {
         font-size: 1.2rem;
     }
     
-    .pros-cons {
-        grid-template-columns: 1fr;
+    .amazon-cta {
+        display: block;
+        text-align: center;
     }
 }
 `;
 
 // ============================================
-// AI CONTENT GENERATOR - JOURNALISTIC STANDARDS
+// ANTHROPIC API CLIENT
 // ============================================
 
-async function generateReviewArticle(product, niche) {
-    console.log(`🤖 Generating professional review for: ${product}...`);
+const anthropic = new Anthropic({
+    apiKey: CONFIG.anthropicApiKey
+});
+
+// ============================================
+// CONTENT FORMATTING - THE CRITICAL FIX!
+// ============================================
+
+function formatContentToHTML(rawContent) {
+    console.log('🔧 Formatting content with proper paragraph structure...');
     
-    const prompt = `You are a senior tech journalist with 15+ years of experience writing for publications like The Verge, TechCrunch, and Wired. 
+    let formatted = rawContent;
+    
+    // Step 1: Normalize line breaks
+    formatted = formatted.replace(/\r\n/g, '\n');
+    formatted = formatted.replace(/\r/g, '\n');
+    
+    // Step 2: Handle existing HTML tags (if AI generated some)
+    // If content already has <p> tags, return as-is
+    if (formatted.includes('<p>') && formatted.includes('</p>')) {
+        console.log('✅ Content already has proper HTML tags');
+        return formatted;
+    }
+    
+    // Step 3: Split into sections by headings
+    const sections = [];
+    const lines = formatted.split('\n');
+    let currentSection = [];
+    
+    for (let line of lines) {
+        const trimmed = line.trim();
+        
+        // Skip empty lines between paragraphs (we'll handle spacing differently)
+        if (trimmed === '') {
+            if (currentSection.length > 0) {
+                sections.push(currentSection.join('\n'));
+                currentSection = [];
+            }
+            continue;
+        }
+        
+        // Check if it's a heading
+        if (trimmed.match(/^#{1,3}\s/)) {
+            // Save previous section
+            if (currentSection.length > 0) {
+                sections.push(currentSection.join('\n'));
+                currentSection = [];
+            }
+            // Add heading as its own section
+            sections.push(trimmed);
+        } else {
+            currentSection.push(trimmed);
+        }
+    }
+    
+    // Don't forget the last section
+    if (currentSection.length > 0) {
+        sections.push(currentSection.join('\n'));
+    }
+    
+    // Step 4: Convert sections to proper HTML
+    const htmlSections = sections.map(section => {
+        const trimmed = section.trim();
+        
+        // Handle markdown headings
+        if (trimmed.startsWith('### ')) {
+            return `<h3>${trimmed.substring(4)}</h3>`;
+        }
+        if (trimmed.startsWith('## ')) {
+            return `<h2>${trimmed.substring(3)}</h2>`;
+        }
+        if (trimmed.startsWith('# ')) {
+            // Skip H1, we already have one
+            return '';
+        }
+        
+        // Handle bullet lists
+        if (trimmed.includes('\n- ') || trimmed.startsWith('- ')) {
+            const items = trimmed.split('\n')
+                .filter(line => line.trim().startsWith('- '))
+                .map(line => `<li>${line.trim().substring(2)}</li>`)
+                .join('\n');
+            return `<ul>\n${items}\n</ul>`;
+        }
+        
+        // Handle numbered lists
+        if (trimmed.match(/^\d+\.\s/)) {
+            const items = trimmed.split('\n')
+                .filter(line => line.trim().match(/^\d+\.\s/))
+                .map(line => `<li>${line.trim().replace(/^\d+\.\s/, '')}</li>`)
+                .join('\n');
+            return `<ol>\n${items}\n</ol>`;
+        }
+        
+        // Regular paragraph - split by sentence groups (3-5 sentences = 1 paragraph)
+        // This ensures readability!
+        const sentences = trimmed.split(/(?<=[.!?])\s+/);
+        const paragraphs = [];
+        let currentParagraph = [];
+        
+        for (let i = 0; i < sentences.length; i++) {
+            currentParagraph.push(sentences[i]);
+            
+            // Create new paragraph every 3-5 sentences OR at natural breaks
+            if (currentParagraph.length >= 3 && (
+                i === sentences.length - 1 || 
+                currentParagraph.length >= 5 ||
+                sentences[i + 1]?.match(/^(However|Moreover|Additionally|Furthermore|In contrast|On the other hand)/i)
+            )) {
+                paragraphs.push(`<p>${currentParagraph.join(' ')}</p>`);
+                currentParagraph = [];
+            }
+        }
+        
+        // Add any remaining sentences
+        if (currentParagraph.length > 0) {
+            paragraphs.push(`<p>${currentParagraph.join(' ')}</p>`);
+        }
+        
+        return paragraphs.join('\n\n');
+    }).filter(section => section.trim() !== '');
+    
+    const finalHTML = htmlSections.join('\n\n');
+    
+    console.log('✅ Content formatted with proper paragraph structure!');
+    return finalHTML;
+}
 
-Create an exceptionally high-quality, professionally written review article for "${product}" in the "${niche}" category.
+// ============================================
+// AI CONTENT GENERATION
+// ============================================
 
-CRITICAL - PRODUCT SPECIFICITY:
-You MUST reference SPECIFIC, REAL products with EXACT model names/numbers:
-- Main product: Use EXACT model name (e.g., "Apple Watch Ultra 2", "Logitech MX Master 3S", "Dell XPS 15 9530")
-- Alternatives: Use SPECIFIC competing models with exact names
-- NO generic terms like "premium gaming laptop" - use "ASUS ROG Zephyr G14 2024"
-- NO vague descriptions - use precise model identifiers
+async function generateReviewArticle(productName, niche) {
+    console.log(`🤖 Generating professional review for: ${productName}`);
+    
+    const prompt = `You are a PROFESSIONAL TECH JOURNALIST writing for a premium publication like The New York Times Wirecutter or CNET. Write a comprehensive, well-researched review article.
 
-After mentioning each specific product, add its search-friendly name in format:
-[PRODUCT: Exact Model Name]
+PRODUCT TO REVIEW: "${productName}" in the ${niche} category.
 
-Example:
-"The Apple Watch Ultra 2 is our top choice for extreme athletes."
-[PRODUCT: Apple Watch Ultra 2]
+CRITICAL FORMATTING RULES:
+1. Use markdown headings: ## for H2, ### for H3
+2. Write in short, punchy paragraphs (3-5 sentences MAXIMUM per paragraph)
+3. Use bullet points for lists (start with "- ")
+4. Use numbered lists where appropriate (1. 2. 3.)
+5. Leave blank lines between paragraphs for spacing
+6. NO wall of text! Break it up!
 
 JOURNALISTIC STANDARDS:
-- Write in clear, engaging prose with proper paragraph structure
-- Use the inverted pyramid: most important information first
-- Maintain objectivity while being helpful
-- Include specific technical details and real-world context
-- Write for an intelligent but non-technical audience
+- Professional but conversational tone
+- Fact-based, specific details
 - NO marketing fluff or hyperbole
-- Fact-based analysis with balanced perspective
-
-ARTICLE STRUCTURE:
-1. **Introduction** (150-200 words)
-   - Hook: Why this product matters
-   - Context: Market landscape
-   - Thesis: What this review will cover
-
-2. **Main Product Analysis** (400-500 words)
-   - Mention SPECIFIC model name/number
-   [PRODUCT: Exact Model Name]
-   - Detailed specifications
-   - Design and build quality
-   - Performance analysis
-   - Real-world use cases
-   [AMAZON-LINK-MAIN]
-
-3. **Alternative Products** (600-800 words)
-   - Compare with 3-4 SPECIFIC competing products
-   - Use EXACT model names for each
-   [PRODUCT: Alternative 1 Model Name]
-   [AMAZON-LINK-ALT1]
-   [PRODUCT: Alternative 2 Model Name]
-   [AMAZON-LINK-ALT2]
-   [PRODUCT: Alternative 3 Model Name]
-   [AMAZON-LINK-ALT3]
-   - Each alternative: 150-200 words with pros/cons
-   - Clear recommendations for different use cases
-
-4. **Buying Guide** (300-400 words)
-   - Key factors to consider
-   - Who should buy each option
-   - Budget recommendations
-   [AMAZON-LINK-GUIDE]
-
-5. **FAQ Section** (200-300 words)
-   - 5-7 common questions with concise answers
-
-6. **Conclusion** (150-200 words)
-   - Summary of findings
-   - Final recommendation
-   - Call to action
-
-CRITICAL - AMAZON LINK PLACEMENT:
-Use EXACTLY 5 Amazon link markers in strategic positions:
-- [AMAZON-LINK-MAIN] - After main product with [PRODUCT: Name]
-- [AMAZON-LINK-ALT1] - After first alternative with [PRODUCT: Name]
-- [AMAZON-LINK-ALT2] - After second alternative with [PRODUCT: Name]
-- [AMAZON-LINK-ALT3] - After third alternative with [PRODUCT: Name]
-- [AMAZON-LINK-GUIDE] - In buying guide section
-
-DO NOT add more links. Quality over quantity.
-
-WRITING STYLE:
-- Professional but conversational
-- Active voice preferred
-- Short paragraphs (3-5 sentences)
-- Subheadings for scannability
-- Specific examples over generalizations
+- Active voice, clear prose
 - Technical accuracy without jargon
+- Balance pros and cons fairly
 
-SEO OPTIMIZATION:
-- Title: Compelling, 60 characters max, includes year
-- Meta description: Actionable, 160 characters max
-- Natural keyword integration
-- H1, H2, H3 hierarchy
-- Long-form content (${CONFIG.minWordCount}-${CONFIG.maxWordCount} words)
+ARTICLE STRUCTURE (MANDATORY):
+
+## Introduction (150-200 words)
+Start with a compelling hook about why this product matters. Provide market context. State what this review will cover.
+
+Use 3-4 SHORT paragraphs, not one giant block!
+
+## Our Top Pick: [Specific Model Name]
+[PRODUCT: Exact Model Name Here]
+
+Detailed analysis in SHORT paragraphs:
+- What makes it stand out
+- Design and build quality  
+- Key specifications (be specific!)
+- Real-world performance
+- Who should buy it
+
+[AMAZON-LINK-MAIN]
+
+Break this into 4-5 paragraphs!
+
+## Alternative Options Worth Considering
+
+### [Alternative Product 1 - Specific Model]
+[PRODUCT: Alternative 1 Exact Model Name]
+
+2-3 SHORT paragraphs about this alternative.
+- Key features
+- Pros and cons
+- Best use case
+
+[AMAZON-LINK-ALT1]
+
+### [Alternative Product 2 - Specific Model]
+[PRODUCT: Alternative 2 Exact Model Name]
+
+2-3 SHORT paragraphs.
+[AMAZON-LINK-ALT2]
+
+### [Alternative Product 3 - Specific Model]
+[PRODUCT: Alternative 3 Exact Model Name]
+
+2-3 SHORT paragraphs.
+[AMAZON-LINK-ALT3]
+
+## How to Choose the Right ${niche}
+
+Buying guide in SHORT paragraphs covering:
+- Key factors to consider
+- Budget recommendations  
+- Who each option is best for
+
+[AMAZON-LINK-GUIDE]
+
+## Frequently Asked Questions
+
+### Question 1?
+Short, direct answer (2-3 sentences).
+
+### Question 2?
+Short answer.
+
+(Include 5-7 FAQs)
+
+## Final Verdict
+
+Summary in 2-3 SHORT paragraphs:
+- Key findings
+- Final recommendation
+- Call to action
+
+CRITICAL - AMAZON LINKS:
+Use EXACTLY 5 markers: [AMAZON-LINK-MAIN], [AMAZON-LINK-ALT1], [AMAZON-LINK-ALT2], [AMAZON-LINK-ALT3], [AMAZON-LINK-GUIDE]
+
+CRITICAL - PRODUCT NAMES:
+Mark each product with [PRODUCT: Exact Model Name] so we can create accurate Amazon links.
+
+WORD COUNT: ${CONFIG.minWordCount}-${CONFIG.maxWordCount} words
 
 RESPONSE FORMAT:
 ---TITLE---
-[Compelling title under 60 characters]
+[Compelling title under 60 chars with year 2026]
 
 ---META---
-[Meta description under 160 characters]
+[Meta description under 160 chars]
 
 ---CONTENT---
-[Full article in clean HTML with proper semantic structure and [PRODUCT: Name] markers]
+[Full article with proper paragraph breaks and formatting]
 
 ---KEYWORDS---
-[5-7 comma-separated SEO keywords]
+[5-7 SEO keywords separated by commas]
 
-Begin writing now. Remember: You're a professional tech journalist, not a marketing copywriter. Use SPECIFIC product models!`;
+Begin writing. Remember: SHORT PARAGRAPHS! NO WALLS OF TEXT!`;
 
     const message = await anthropic.messages.create({
         model: CONFIG.model,
@@ -450,7 +590,7 @@ Begin writing now. Remember: You're a professional tech journalist, not a market
 }
 
 // ============================================
-// STRATEGIC AMAZON LINK INJECTION
+// AMAZON LINK INJECTION
 // ============================================
 
 function injectAmazonLinks(content, productName) {
@@ -464,7 +604,6 @@ function injectAmazonLinks(content, productName) {
         alt3: null
     };
     
-    // Find all [PRODUCT: Name] markers and extract product names
     const productRegex = /\[PRODUCT:\s*([^\]]+)\]/g;
     const matches = [...processed.matchAll(productRegex)];
     
@@ -480,10 +619,9 @@ function injectAmazonLinks(content, productName) {
     // Remove [PRODUCT: Name] markers from content
     processed = processed.replace(productRegex, '');
     
-    // Create search-optimized product URL for Amazon
+    // Create product-specific Amazon search URLs
     const createSearchQuery = (name) => {
         if (!name) {
-            // Fallback to main product name
             return productName.toLowerCase()
                 .replace(/best |top |review |guide |under |budget |\d{4}/gi, '')
                 .replace(/[^a-z0-9\s]/g, '')
@@ -491,46 +629,39 @@ function injectAmazonLinks(content, productName) {
                 .replace(/\s+/g, '+');
         }
         
-        // Use exact product name for precise search
         return name
             .replace(/[^a-z0-9\s]/gi, '')
             .trim()
             .replace(/\s+/g, '+');
     };
     
-    // Amazon CTA Component with product-specific URL
-    const createAmazonCTA = (productSearch, ctaText = 'Check Price on Amazon') => {
-        const searchQuery = createSearchQuery(productSearch);
-        const url = `https://www.amazon.com/s?k=${searchQuery}&tag=${CONFIG.amazonTag}`;
-        console.log(`🔗 Creating link for "${productSearch}": ${url}`);
-        return `
-<div class="amazon-cta">
-    <a href="${url}" 
-       target="_blank" 
-       rel="nofollow sponsored noopener" 
-       class="amazon-button">
-        🛒 ${ctaText} →
-    </a>
-</div>`;
+    // Create Amazon CTA button HTML
+    const createAmazonCTA = (productName, buttonText = 'Check Price on Amazon') => {
+        const searchQuery = createSearchQuery(productName);
+        const amazonURL = `https://www.amazon.com/s?k=${searchQuery}&tag=${CONFIG.amazonTag}`;
+        
+        console.log(`🔗 Creating link for: "${productName}" → ${amazonURL}`);
+        
+        return `\n\n<a href="${amazonURL}" class="amazon-cta" target="_blank" rel="nofollow noopener">${buttonText} →</a>\n\n`;
     };
     
-    // Strategic Replacements with product-specific links
+    // Replace Amazon link markers with actual buttons
     processed = processed.replace('[AMAZON-LINK-MAIN]', 
-        createAmazonCTA(productMarkers.main || productName, 'Check Latest Price on Amazon'));
+        createAmazonCTA(productMarkers.main || productName, 'Check Price on Amazon'));
     
     processed = processed.replace('[AMAZON-LINK-ALT1]', 
-        createAmazonCTA(productMarkers.alt1 || productName, 'Compare Prices on Amazon'));
+        createAmazonCTA(productMarkers.alt1 || productName, 'View on Amazon'));
     
     processed = processed.replace('[AMAZON-LINK-ALT2]', 
-        createAmazonCTA(productMarkers.alt2 || productName, 'View on Amazon'));
+        createAmazonCTA(productMarkers.alt2 || productName, 'See on Amazon'));
     
     processed = processed.replace('[AMAZON-LINK-ALT3]', 
-        createAmazonCTA(productMarkers.alt3 || productName, 'See Customer Reviews on Amazon'));
+        createAmazonCTA(productMarkers.alt3 || productName, 'Shop on Amazon'));
     
     processed = processed.replace('[AMAZON-LINK-GUIDE]', 
         createAmazonCTA(productMarkers.main || productName, 'Shop on Amazon'));
     
-    // Remove any remaining markers (safety)
+    // Remove any remaining markers
     processed = processed.replace(/\[AMAZON-LINK-.*?\]/g, '');
     
     return processed;
@@ -580,6 +711,16 @@ async function saveArticle(articleData, filename) {
     await fs.mkdir(CONFIG.outputDir, { recursive: true });
     
     const filePath = path.join(CONFIG.outputDir, filename);
+    
+    // Get current date for schema
+    const now = new Date();
+    const isoDate = now.toISOString();
+    const readableDate = now.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+    
     const fullHTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -588,9 +729,19 @@ async function saveArticle(articleData, filename) {
     <title>${articleData.title}</title>
     <meta name="description" content="${articleData.meta}">
     <meta name="keywords" content="${articleData.keywords}">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2KQ7NJNKDX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-2KQ7NJNKDX');
+    </script>
+    
     <style>${ARTICLE_CSS}</style>
     
-    <!-- Schema.org markup -->
+    <!-- Schema.org Product Markup with AggregateRating (GEO Optimized) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -615,7 +766,7 @@ async function saveArticle(articleData, filename) {
                 "@type": "Organization",
                 "name": "TechVerdictPro"
             },
-            "datePublished": "${new Date().toISOString()}",
+            "datePublished": "${isoDate}",
             "reviewBody": "${articleData.meta}"
         }
     }
@@ -624,8 +775,11 @@ async function saveArticle(articleData, filename) {
 <body>
     <article>
         <div class="article-meta">
-            <time datetime="${new Date().toISOString()}">${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-            • ${Math.ceil(articleData.wordCount / 200)} min read
+            <time datetime="${isoDate}">📅 Published: ${readableDate}</time>
+            <span> • </span>
+            <span>⏱️ ${Math.ceil(articleData.wordCount / 200)} min read</span>
+            <span> • </span>
+            <span>✍️ TechVerdictPro Editorial Team</span>
         </div>
         
         <h1>${articleData.title}</h1>
@@ -633,7 +787,7 @@ async function saveArticle(articleData, filename) {
         ${articleData.content}
         
         <div class="disclosure">
-            <strong>Affiliate Disclosure:</strong> TechVerdictPro participates in the Amazon Services LLC Associates Program. When you purchase through our Amazon links, we may earn a commission at no additional cost to you. This helps support our independent reviews. <a href="/">Learn more</a>
+            <strong>📢 Affiliate Disclosure:</strong> TechVerdictPro participates in the Amazon Services LLC Associates Program. When you purchase through our Amazon links, we may earn a commission at no additional cost to you. This helps support our independent, in-depth reviews. <a href="/">Learn more about our review process</a>.
         </div>
     </article>
 </body>
@@ -646,13 +800,13 @@ async function saveArticle(articleData, filename) {
 }
 
 // ============================================
-// MAIN AUTOMATION LOOP
+// MAIN GENERATION LOOP
 // ============================================
 
 async function generateDailyContent() {
-    console.log('\n🚀 TechVerdictPro Content Generator v2.0\n');
+    console.log('\n🚀 TechVerdictPro Content Generator v3.0 - FIXED\n');
     console.log(`📅 ${new Date().toLocaleDateString('en-US')}`);
-    console.log(`🎯 Target: ${CONFIG.articlesPerDay} professional articles\n`);
+    console.log(`🎯 Target: ${CONFIG.articlesPerDay} professionally formatted articles\n`);
     
     const allGeneratedFiles = [];
     
@@ -667,9 +821,10 @@ async function generateDailyContent() {
             console.log(`📂 Niche: ${niche}`);
             console.log(`🎯 Product: ${product}\n`);
             
+            // Generate raw content
             const rawContent = await generateReviewArticle(product, niche);
             
-            // Parse response
+            // Parse response sections
             const titleMatch = rawContent.match(/---TITLE---\s*\n(.+?)\n/);
             const metaMatch = rawContent.match(/---META---\s*\n(.+?)\n/);
             const contentMatch = rawContent.match(/---CONTENT---\s*\n([\s\S]+?)(?=\n---KEYWORDS---|$)/);
@@ -680,10 +835,13 @@ async function generateDailyContent() {
             let content = contentMatch ? contentMatch[1].trim() : rawContent;
             const keywords = keywordsMatch ? keywordsMatch[1].trim() : '';
             
-            // Inject strategic Amazon links
+            // CRITICAL: Format content with proper paragraphs!
+            content = formatContentToHTML(content);
+            
+            // Inject Amazon links
             content = injectAmazonLinks(content, product);
             
-            const wordCount = content.split(/\s+/).length;
+            const wordCount = content.replace(/<[^>]*>/g, '').split(/\s+/).length;
             
             const filename = `${Date.now()}-${product.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.html`;
             const filePath = await saveArticle({ title, meta, content, keywords, wordCount }, filename);
@@ -692,41 +850,50 @@ async function generateDailyContent() {
             
             console.log(`✨ ${wordCount} words`);
             console.log(`🔗 5 strategic Amazon links`);
-            console.log(`📊 SEO optimized\n`);
+            console.log(`📊 SEO + GEO optimized`);
+            console.log(`✅ Professional formatting!\n`);
             
+            // Rate limiting - be nice to API
             await new Promise(resolve => setTimeout(resolve, 2000));
             
         } catch (error) {
-            console.error(`❌ Error: ${error.message}`);
+            console.error(`❌ Error generating article ${i + 1}: ${error.message}`);
+            if (error.message.includes('overloaded')) {
+                console.log('⏸️  API overloaded. Waiting 60 seconds...');
+                await new Promise(resolve => setTimeout(resolve, 60000));
+            }
         }
     }
     
-    console.log('\n' + '='.repeat(60));
-    console.log('✅ GENERATION COMPLETE');
-    console.log(`📊 Articles: ${allGeneratedFiles.length}/${CONFIG.articlesPerDay}`);
+    console.log('\n' + '='.repeat(50));
+    console.log('✅ GENERATION COMPLETE!');
+    console.log(`📊 Articles generated: ${allGeneratedFiles.length}/${CONFIG.articlesPerDay}`);
     console.log(`📁 Location: ${CONFIG.outputDir}`);
-    console.log('='.repeat(60) + '\n');
+    console.log('='.repeat(50) + '\n');
     
     return allGeneratedFiles;
 }
 
 // ============================================
-// CLI
+// COMMAND LINE EXECUTION
 // ============================================
 
-if (require.main === module) {
-    const args = process.argv.slice(2);
-    
-    if (args.includes('--once')) {
-        generateDailyContent()
-            .then(() => process.exit(0))
-            .catch(err => {
-                console.error('Fatal error:', err);
-                process.exit(1);
-            });
-    } else {
-        generateDailyContent();
-    }
-}
+const args = process.argv.slice(2);
+const isOnceMode = args.includes('--once');
 
-module.exports = { generateDailyContent, generateReviewArticle, findTrendingProducts, CONFIG };
+if (isOnceMode) {
+    // Single run mode (for testing or scheduled tasks)
+    generateDailyContent()
+        .then(() => process.exit(0))
+        .catch(error => {
+            console.error('Fatal error:', error);
+            process.exit(1);
+        });
+} else {
+    // Interactive mode
+    console.log('Starting TechVerdictPro Content Generator...');
+    console.log('Run with --once flag for single generation\n');
+    generateDailyContent()
+        .then(() => console.log('\n✅ Done! Run again anytime.'))
+        .catch(error => console.error('Error:', error));
+}
